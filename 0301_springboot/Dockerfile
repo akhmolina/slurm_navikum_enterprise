@@ -19,7 +19,7 @@ ENV JDBC_URL=$JDBC_URL
 #          --no-header-files \
 #          --compress=2 \
 #          --output jdk
-
+RUN chmod +x mvnw
 RUN ./mvnw verify
 
 
