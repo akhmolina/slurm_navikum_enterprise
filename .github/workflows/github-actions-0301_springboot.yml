@@ -62,7 +62,7 @@ jobs:
           labels: latest
 
       - name: Start docker compose
-        run: docker-compose -f "docker-compose.yml" up -d
+        run: docker-compose -f "${{ env.DOCKER_CONTEXT_PATH }}/docker-compose.yml" up -d
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -80,7 +80,7 @@ jobs:
 
       - name: Stop docker compose
         if: always()
-        run: docker-compose -f "docker-compose.yml" down
+        run: docker-compose -f "${{ env.DOCKER_CONTEXT_PATH }}/docker-compose.yml" down
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
