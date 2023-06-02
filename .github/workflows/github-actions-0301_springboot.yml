@@ -74,8 +74,8 @@ jobs:
           context: ${{ env.DOCKER_CONTEXT_PATH }}
           file: ${{ env.DOCKERFILE_PATH }}
           push: ${{ github.event_name != 'pull_request' }}
-          build-args: JDBC_URL=${{ env.JDBC_URL }}
           tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
+          add-hosts: "host.docker.internal:host-gateway"
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
