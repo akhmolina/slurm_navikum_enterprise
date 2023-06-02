@@ -12,7 +12,6 @@ services:
       - /home/valentina/data:/data
     ports:
       - "5432:5432"
-    network_mode: host
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U user -d db"]
       interval: 10s
