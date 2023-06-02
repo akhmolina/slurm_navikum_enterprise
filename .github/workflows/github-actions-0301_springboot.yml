@@ -75,7 +75,7 @@ jobs:
           file: ${{ env.DOCKERFILE_PATH }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
-          add-hosts: "host.docker.internal:host-gateway"
+          add-hosts: "host.docker.internal:172.17.0.1"
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
