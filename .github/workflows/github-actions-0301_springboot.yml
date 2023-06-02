@@ -13,6 +13,7 @@ env:
   DOCKER_CONTEXT_PATH: ./0301_springboot
   IMAGE_NAME: 0301_springboot
   REGISTRY: ghcr.io
+  JDBC_URL: "jdbc:postgresql://localhost:5432/db?user=user&password=pass"
 
 jobs:
   build:
@@ -73,6 +74,7 @@ jobs:
           context: ${{ env.DOCKER_CONTEXT_PATH }}
           file: ${{ env.DOCKERFILE_PATH }}
           push: ${{ github.event_name != 'pull_request' }}
+          build-args: JDBC_URL=${{ env.JDBC_URL }}
           tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
