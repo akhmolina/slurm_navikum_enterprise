@@ -7,7 +7,7 @@ COPY mvnw mvnw.cmd ./
 COPY .mvn/ .mvn/
 COPY pom.xml ./
 
-RUN chmod +x mvnw && ./mvnw validate
+RUN chmod +x mvnw && ./mvnw dependency:resolve
 
 COPY src/ src/
 ARG JDBC_URL
