@@ -10,10 +10,6 @@ COPY pom.xml ./
 RUN chmod +x mvnw && ./mvnw dependency:resolve
 
 COPY src/ src/
-
-RUN chmod +x mvnw && ./mvnw validate
-
-COPY src/ src/
 ARG JDBC_URL
 ENV JDBC_URL=$JDBC_URL
 
