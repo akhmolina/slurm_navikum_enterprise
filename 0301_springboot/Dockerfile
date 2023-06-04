@@ -6,8 +6,10 @@ WORKDIR /build
 COPY mvnw mvnw.cmd ./
 COPY .mvn/ .mvn/
 COPY pom.xml ./
-COPY src/ src/
 
+RUN chmod +x mvnw && ./mvnw validate
+
+COPY src/ src/
 ARG JDBC_URL
 ENV JDBC_URL=$JDBC_URL
 
@@ -19,7 +21,6 @@ ENV JDBC_URL=$JDBC_URL
 #          --no-header-files \
 #          --compress=2 \
 #          --output jdk
-RUN chmod +x mvnw
 RUN ./mvnw verify
 
 
