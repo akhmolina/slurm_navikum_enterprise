@@ -7,6 +7,10 @@ COPY mvnw mvnw.cmd ./
 COPY .mvn/ .mvn/
 COPY pom.xml ./
 
+RUN chmod +x mvnw && ./mvnw dependency:resolve
+
+COPY src/ src/
+
 RUN chmod +x mvnw && ./mvnw validate
 
 COPY src/ src/
