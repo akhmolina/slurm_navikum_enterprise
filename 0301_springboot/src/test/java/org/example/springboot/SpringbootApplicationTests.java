@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class SpringbootApplicationTests {
-
+  @Autowired
+  TestRestTemplate restTemplate;
 
   @Autowired
   JdbcTemplate jdbcTemplate;
-  @Autowired
-  TestRestTemplate restTemplate;
+
   @Test
   void shouldGetAll() {
     // Just simple test emulation
